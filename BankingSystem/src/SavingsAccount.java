@@ -26,7 +26,7 @@ public class SavingsAccount extends BankAccount{
                     increase_amount = interestRate * curBalance;
                     if (maximumBalance > curBalance + increase_amount) {
                         this.setBalance(curBalance + increase_amount);
-                        transactions.add(new Transactions(this.getOwner(),null,TransactionType.applyInterest,increase_amount,curBalance,null));
+                        transactions.add(new Transactions(this.getBankAccId(),null,TransactionType.applyInterest,increase_amount,curBalance,null));
 
                     } else {
                         throw new RuntimeException("Maximum balance is exceeded.");
@@ -47,7 +47,7 @@ public class SavingsAccount extends BankAccount{
     public void deposit(double deposit_amount){
         if(maximumBalance > this.getBalance() + deposit_amount) {
             this.setBalance(this.getBalance() + deposit_amount);
-            transactions.add(new Transactions(this.getOwner(),null,TransactionType.Deposit,deposit_amount,this.getBalance() ,null));
+            transactions.add(new Transactions(this.getBankAccId(),null,TransactionType.Deposit,deposit_amount,this.getBalance() ,null));
 
         }else{
             throw new RuntimeException("Maximum balance is exceeded.");

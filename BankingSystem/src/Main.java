@@ -6,15 +6,60 @@ void main(String[] args) {
     BankAccount ac2 = new BankAccount("test2",20.1);
 
     Bank bank = new Bank();
-    System.out.println();bank.openAccount();
-    System.out.println();bank.openAccount();
+    bank.openAccountNewCust("Test1");
+    bank.openAccount("Test1");
+    bank.openAccount("Test1");
+    bank.openAccount("Test1");
+    bank.openAccountNewCust("Test2");
 
 
-    List<BankAccount> currListAccs= bank.listAllAccounts();
-        for(int i = 0; i< currListAccs.size();i++){
-            currListAccs.get(i).deposit(10.0);
-            System.out.println(currListAccs.get(i).getOwner() + " " + currListAccs.get(i).getBalance());
+    Map<String,List<BankAccount>> getcustomers = bank.getCustomersList();
+    List<BankAccount> listAccounts = bank.listAllAccounts();
+    for(int i = 0;i<listAccounts.size();i++){
+        System.out.println(listAccounts.get(i).getBankAccId());
+    }
+
+
+    for(String k : getcustomers.keySet()){
+        for(int i =0; i<getcustomers.get(k).size();i++){
+            System.out.println("List size of "+ k + " = " + getcustomers.get(k).size() + " " + "balance:" + getcustomers.get(k).get(i).getBalance());
         }
+    }
+
+
+    Bank b = new Bank();
+    b.openAccountNewCust("Test1");
+    b.openAccount("Test1");
+    b.openAccountNewCust("Test2");
+    b.getAccount("Test1",0).deposit(100);
+    b.getAccount("Test1").deposit(100);
+    b.getAccount("Test1").withdraw(10);
+    b.getAccount("Test1",0).transferTo(b.getAccount("Test2"), 100);
+    List<Transactions> reportByDate = b.getAccount("Test1").generateStatement(LocalDateTime.of(2026,3,23,0,0), LocalDateTime.of(2026,3,23,22,0));
+
+    for(int i = 0; i<reportByDate.size();i++){
+        Transactions t = reportByDate.get(i);
+        System.out.println("BankAccId: " + t.getBankAccId() + "\nTransferTo: " + t.getbankAccIdTo() + "\nTransaction Type: " + t.getTransactionType() + "\nAmount: " + t.getAmount() + "\nBalance: " + t.getBalance() + "\nTimestamp: " + t.getTimestamp());
+    }
+
+//    BankAccount bacc = new BankAccount("123",123);
+//    BankAccount bacc2 = new BankAccount("123",123);
+//
+//    bacc.deposit(100);
+//    bacc.withdraw(10);
+//    System.out.println(bacc.getBalance());
+//    bacc.transferTo(bacc2,10);
+
+//    for(int i = 0; i<bacc.generateStatement(getcustomers).size();i++){
+//        System.out.println(bacc.generateStatement().get(i).);
+//    }
+
+
+    //    List<BankAccount> currListAccs= bank.listAllAccounts();
+//        for(int i = 0; i< currListAccs.size();i++){
+//            currListAccs.get(i).deposit(10.0);
+//            System.out.println(currListAccs.get(i).getOwner() + " " + currListAccs.get(i).getBalance());
+//        }
     // bank.closeAccount("c013232c-015e-4431-926a-e07b4f877197");
 
 //        for(int i = 0; i<currListAccs.size();i++){

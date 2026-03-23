@@ -20,9 +20,9 @@ public class CheckingAccount extends BankAccount{
         if(curBalance - (withdraw_amount +per_withdrawFee) >= overdraftLimit){
             //doJob
             this.setBalance(curBalance-(withdraw_amount+ per_withdrawFee));
-            transactions.add(new Transactions(this.getOwner(),null,TransactionType.Withdraw,withdraw_amount,curBalance + per_withdrawFee,null));
-            transactions.add(new Transactions(this.getOwner(),null,TransactionType.FEE,per_withdrawFee,curBalance - per_withdrawFee,null));
-            transactions.add(new Transactions(this.getOwner(),null,TransactionType.FEE,overdraftFee,0.0,null));
+            transactions.add(new Transactions(this.getBankAccId(),null,TransactionType.Withdraw,withdraw_amount,curBalance + per_withdrawFee,null));
+            transactions.add(new Transactions(this.getBankAccId(),null,TransactionType.FEE,per_withdrawFee,curBalance - per_withdrawFee,null));
+            transactions.add(new Transactions(this.getBankAccId(),null,TransactionType.FEE,overdraftFee,0.0,null));
         }else{
             //reject
 

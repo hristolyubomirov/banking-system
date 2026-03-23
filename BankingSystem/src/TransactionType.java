@@ -3,6 +3,7 @@ public enum TransactionType {
     Deposit,
     FEE,
     closeAccount,
+    openAccountNewCust,
     openAccount,
     transferTo,
     applyInterest
