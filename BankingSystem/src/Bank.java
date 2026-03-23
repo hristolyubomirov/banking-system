@@ -14,7 +14,7 @@ public class Bank {
 
     public void openAccount(String custName){
         String id = String.valueOf(UUID.randomUUID());
-        store_bankAcc.put(id,new BankAccount(custName,0));
+        store_bankAcc.put(id,new BankAccount(id,0));
         //creating new cust as well
 
         for(int i = 0; i< customersList.size();i++){
@@ -41,14 +41,14 @@ public class Bank {
 
     public void openAccountNewCust(String custName){
         String id = String.valueOf(UUID.randomUUID());
-        store_bankAcc.put(id,new BankAccount(custName,0));
+        store_bankAcc.put(id,new BankAccount(id,0));
         //creating new cust as well
         Customer c = new Customer(custName);
 
 
         customersList.add(c);
 
-        c.getAccounts().add(new BankAccount(custName,0));
+        c.getAccounts().add(new BankAccount(id,0));
         custAccounts.put(c.getName(),c.getAccounts());
         transactions.add(new Transactions(id,null,TransactionType.openAccountNewCust,0,0,null));
 

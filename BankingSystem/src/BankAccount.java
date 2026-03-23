@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 public class BankAccount {
-    private String bankAccId;
+    private final String bankAccId;
     private double balance;
     protected static final double per_withdrawFee = 1.0;
     private List<Transactions> transactions = new ArrayList<>();
 
-    public BankAccount(String custName,double balance){
-        this.bankAccId = custName;
+    public BankAccount(String bankAccId,double balance){
+        this.bankAccId = bankAccId;
         this.balance = balance;
     }
 
