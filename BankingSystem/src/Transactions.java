@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Transactions {
     private String bankAccId;
-        private String bankAccIdTo;
+    private String bankAccIdTo;
     TransactionType transactionType;
     private double amount;
     private double balance;
@@ -19,9 +19,10 @@ public class Transactions {
         this.balance = balance;
         this.timestamp = timestamp == null ? LocalDateTime.now() : timestamp;
     }
-public LocalDateTime getTimestamp(){
+
+    public LocalDateTime getTimestamp() {
         return this.timestamp;
-}
+    }
 
 
     public String getBankAccId() {
@@ -43,7 +44,6 @@ public LocalDateTime getTimestamp(){
     public double getBalance() {
         return balance;
     }
-
 
 
 }

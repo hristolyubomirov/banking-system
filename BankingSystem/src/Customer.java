@@ -23,18 +23,20 @@ public class Customer {
     }
 
 
-    public List<BankAccount> getAccounts(){
+    public List<BankAccount> getAccounts() {
         return this.accounts;
 
     }
-    public String getNid(){
+
+    public String getNid() {
         return this.nid;
     }
-    public String getName(){
+
+    public String getName() {
         return this.name;
     }
 
-    public Customer getCustomer(){
+    public Customer getCustomer() {
         return this;
     }
 

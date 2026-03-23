@@ -2,8 +2,8 @@
 import java.util.*;
 
 void main(String[] args) {
-    BankAccount ac1 = new BankAccount("test",10.1);
-    BankAccount ac2 = new BankAccount("test2",20.1);
+    BankAccount ac1 = new BankAccount("test", 10.1);
+    BankAccount ac2 = new BankAccount("test2", 20.1);
 
     Bank bank = new Bank();
     bank.openAccountNewCust("Test1");
@@ -13,16 +13,16 @@ void main(String[] args) {
     bank.openAccountNewCust("Test2");
 
 
-    Map<String,List<BankAccount>> getcustomers = bank.getCustomersList();
+    Map<String, List<BankAccount>> getcustomers = bank.getCustomersList();
     List<BankAccount> listAccounts = bank.listAllAccounts();
-    for(int i = 0;i<listAccounts.size();i++){
+    for (int i = 0; i < listAccounts.size(); i++) {
         System.out.println(listAccounts.get(i).getBankAccId());
     }
 
 
-    for(String k : getcustomers.keySet()){
-        for(int i =0; i<getcustomers.get(k).size();i++){
-            System.out.println("List size of "+ k + " = " + getcustomers.get(k).size() + " " + "balance:" + getcustomers.get(k).get(i).getBalance());
+    for (String k : getcustomers.keySet()) {
+        for (int i = 0; i < getcustomers.get(k).size(); i++) {
+            System.out.println("List size of " + k + " = " + getcustomers.get(k).size() + " " + "balance:" + getcustomers.get(k).get(i).getBalance());
         }
     }
 
@@ -31,13 +31,13 @@ void main(String[] args) {
     b.openAccountNewCust("Test1");
     b.openAccount("Test1");
     b.openAccountNewCust("Test2");
-    b.getAccount("Test1",0).deposit(100);
+    b.getAccount("Test1", 0).deposit(100);
     b.getAccount("Test1").deposit(100);
     b.getAccount("Test1").withdraw(10);
-    b.getAccount("Test1",0).transferTo(b.getAccount("Test2"), 100);
-    List<Transactions> reportByDate = b.getAccount("Test1").generateStatement(LocalDateTime.of(2026,3,23,0,0), LocalDateTime.of(2026,3,23,22,0));
+    b.getAccount("Test1", 0).transferTo(b.getAccount("Test2"), 100);
+    List<Transactions> reportByDate = b.getAccount("Test1").generateStatement(LocalDateTime.of(2026, 3, 23, 0, 0), LocalDateTime.of(2026, 3, 23, 22, 0));
 
-    for(int i = 0; i<reportByDate.size();i++){
+    for (int i = 0; i < reportByDate.size(); i++) {
         Transactions t = reportByDate.get(i);
         System.out.println("BankAccId: " + t.getBankAccId() + "\nTransferTo: " + t.getbankAccIdTo() + "\nTransaction Type: " + t.getTransactionType() + "\nAmount: " + t.getAmount() + "\nBalance: " + t.getBalance() + "\nTimestamp: " + t.getTimestamp());
     }
@@ -66,8 +66,6 @@ void main(String[] args) {
 //            System.out.println(currListAccs.get(i).getBalance());
 //
 //        }
-
-
 
 
 //    // test1 - transferTo appropriate amount
