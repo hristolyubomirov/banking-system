@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Customer {
-    boolean newCustomer = false;
     private String name;
     private static Integer idIncrement = 1;
     private final Integer id;
