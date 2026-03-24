@@ -36,17 +36,25 @@ public class Bank {
 
 
     public void openAccountNewCust(String custName) {
-        String id = String.valueOf(UUID.randomUUID());
-        store_bankAcc.put(id, new BankAccount(id, 0));
-        //creating new cust as well
-        Customer c = new Customer(custName);
+
+        for(int i = 0; i< customersList.size();i++){
+            if (customersList.get(i).getName().equals(custName)){
+                throw new RuntimeException(custName + " already has an opened account. You can add new by using 'openAccount'.");
+            }
+        }
+
+            String id = String.valueOf(UUID.randomUUID());
+            store_bankAcc.put(id, new BankAccount(id, 0));
+            //creating new cust as well
+            Customer c = new Customer(custName);
 
 
-        customersList.add(c);
+            customersList.add(c);
 
-        c.getAccounts().add(new BankAccount(id, 0));
-        custAccounts.put(c.getName(), c.getAccounts());
-        transactions.add(new Transactions(id, null, TransactionType.openAccountNewCust, 0, 0, null));
+            c.getAccounts().add(new BankAccount(id, 0));
+            custAccounts.put(c.getName(), c.getAccounts());
+            transactions.add(new Transactions(id, null, TransactionType.openAccountNewCust, 0, 0, null));
+
 
     }
 

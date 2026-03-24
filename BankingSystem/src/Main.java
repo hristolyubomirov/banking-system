@@ -7,6 +7,7 @@ void main(String[] args) {
 
     Bank bank = new Bank();
     bank.openAccountNewCust("Test1");
+    //bank.openAccountNewCust("Test1");
     bank.openAccount("Test1");
     bank.openAccount("Test1");
     bank.openAccount("Test1");
